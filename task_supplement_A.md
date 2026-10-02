@@ -1,16 +1,29 @@
-# 补充任务A：函数拟合实验报告
-## 1.实验目的
-使用全连接神经网络拟合正弦函数，观察：
-1. 不同训练轮次(10、100、1000)下拟合曲线变化
-2. 大、小学习率对训练loss和拟合效果的影响
-3. 观察过拟合现象：训练集效果好，测试集效果差
+# 实验A：CNN手写数字识别（MNIST）
+## 1. 环境配置
+- Python虚拟环境：Miniconda
+- 框架：PyTorch + torchvision，启用CUDA GPU加速
+- 硬件：NVIDIA显卡
 
-## 2.环境与依赖
-- Python:3.10
-- Pytorch(GPU CUDA)
-- matplotlib、numpy
-虚拟环境路径：E:\miniconda3\envs\myenv
+## 2. 数据集
+MNIST手写数字数据集，0~9灰度手写图片，60000张训练集，10000张测试集。
 
-运行命令：
-```powershell
-E:\miniconda3\envs\myenv\python.exe fit_curve.py
+## 3. 网络结构 SimpleCNN
+1. Conv1：输入通道1，输出32，卷积核3×3，padding=1
+2. Conv2：输入32，输出64，卷积核3×3，padding=1
+3. MaxPool池化层 2×2
+4. 全连接层fc1：64*7*7 → 512
+5. 输出fc2：512 →10，10分类任务
+
+## 4. 训练超参数
+- Batch size：64
+- 优化器：SGD，学习率lr=0.001，momentum=0.9
+- 损失函数：CrossEntropyLoss交叉熵损失
+- Epoch：10轮
+
+## 5. 实验结果
+- 训练损失：随训练轮数增加持续下降，逐步收敛
+- 测试准确率：持续上升，最终测试准确率接近98%
+- 训练曲线图片：`mnist_result.png`
+
+## 6. 结果分析
+卷积神经网络可以很好提取手写数字局部特征。训练过程中损失不断降低，测试准确率稳步上升，模型收敛效果良好，对手写数字分类任务适配性较好。
