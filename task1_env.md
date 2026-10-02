@@ -2,7 +2,8 @@
 ## 1. 环境信息
 - Python版本：3.10.21
 - 工具：Miniconda
-- PyTorch：CUDA版本，支持GPU加速
+- PyTorch：2.12.0.dev20260408+cu128（CUDA 12.8，GPU加速）
+- torchvision：0.27.0.dev20260407+cu128
 - 显卡型号：RTX 5070 Laptop
 - 虚拟环境路径：E:\miniconda3\envs\myenv
 
